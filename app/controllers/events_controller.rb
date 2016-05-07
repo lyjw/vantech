@@ -26,7 +26,7 @@ class EventsController < ApplicationController # :nodoc:
 
   def create_event_objects
     total_events.each do |event|
-      Event.create(title: event["name"], url: event["link"], description: event["description"], group_name: event["group"]["name"], time: Time.at(event["time"]/1000))
+      Event.create(title: event["name"], url: event["link"], description: event["description"], group_name: event["group"]["name"], time: Time.at(event["time"]/1000).localtime)
     end
   end
 
