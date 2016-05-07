@@ -24,4 +24,10 @@ class TechStacksController < ApplicationController
     end
   end
 
+  def destroy
+  @tech_stack = TechStack.find params[:id]
+  @tech_stack.destroy
+
+  redirect_to tech_stacks
+end
 end
