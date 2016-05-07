@@ -38,7 +38,7 @@ gem 'fog'
 gem 'mini_magick'
 gem 'friendly_id'
 gem 'json'
-
+gem 'meetup_client'
 
 
 group :development, :test do
