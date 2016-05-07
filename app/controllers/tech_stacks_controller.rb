@@ -1,5 +1,12 @@
 class TechStacksController < ApplicationController
 
+  def index
+    @tech_stacks = TechStack.all
+    respond_to do |format|
+      format.json { render json: @tech_stacks.to_json }
+    end
+  end
+
   def create
     tech_stack_params = params.require(:tech_stack).permit(:name)
     @tech_stack = TechStack.new(tech_stack_params)
@@ -25,5 +32,4 @@ class TechStacksController < ApplicationController
       format.js { render :delete_success }
     end
   end
-
 end
