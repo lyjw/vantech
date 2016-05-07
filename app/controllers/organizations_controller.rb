@@ -7,7 +7,11 @@ class OrganizationsController < ApplicationController
   end
 
   def create
-    organization_params = params.require(:organization).permit(:title, :description, :price)
+    organization_params = params.require(:organization).permit(:name, :address,
+                                                       :overview, :employee_count,
+                                                       :tech_team_size, :website,
+                                                       :twitter, :published)
+
     @organization = Organization.new(organization_params)
 
     if @organization.save
