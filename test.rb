@@ -20,7 +20,3 @@ response_array = response.body.split("{\"")
 final = JSON.parse(response.body)
 
 puts final[0]
-#
-# response_array.each do |key|
-#   puts response.body[key]
-# end
