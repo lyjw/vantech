@@ -31,7 +31,7 @@ function (data) {
   <%= date %>
     <% events.each do |event| %>
     <div>
-      <%= event.title %>
+      <%= link_to event.title, event.url %> on <%= event.time.localtime.strftime('%a %d %b') %> @ <%= event.time.localtime.strftime('%I:%M %p') %>
     </div>
   <% end %>
 <% end %>
