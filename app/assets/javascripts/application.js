@@ -11,12 +11,15 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
-<<<<<<< Updated upstream
-=======
+
 //= require jquery.turbolinks
 //= require bootstrap-sprockets
 //= require chosen-jquery
->>>>>>> Stashed changes
+
+//= require bootstrap-sprockets
+//= require chosen-jquery
+
 //= require_tree .
