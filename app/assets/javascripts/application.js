@@ -13,4 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+<<<<<<< Updated upstream
+=======
+//= require jquery.turbolinks
+//= require bootstrap-sprockets
+//= require chosen-jquery
+>>>>>>> Stashed changes
 //= require_tree .
