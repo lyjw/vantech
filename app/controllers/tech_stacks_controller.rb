@@ -17,12 +17,12 @@ class TechStacksController < ApplicationController
     end
   end
 
-  def show
-    @tech_stack = TechStack.find params[:id]
-    respond_to do |format|
-      format.json { render json: @tech_stack.to_json }
-    end
-  end
+  # def show
+  #   @tech_stack = TechStack.find params[:id]
+  #   respond_to do |format|
+  #     format.json { render json: @tech_stack.to_json }
+  #   end
+  # end
 
   def destroy
   @tech_stack = TechStack.find params[:id]
