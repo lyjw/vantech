@@ -1,0 +1,21 @@
+<h1>Hi Admins</h1>
+
+<table class="table">
+  <thead>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Actions</th>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to "Edit", edit_user_path(user)%> | <%= link_to "delete", user_path(user), method: :delete, data: {confirm:"Are you sure holmes?"} %></td>
+      </tr>
+    <% end %>
+</tbody>
+</table>
