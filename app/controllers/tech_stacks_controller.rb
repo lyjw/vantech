@@ -2,7 +2,6 @@ class TechStacksController < ApplicationController
   def index
     @tech_stacks = TechStack.all
     respond_to do |format|
-      # format.html { render }
       format.json { render json: @tech_stacks.to_json }
     end
   end
