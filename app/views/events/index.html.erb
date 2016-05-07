@@ -27,10 +27,6 @@ function (data) {
 
 <div id="groups"></div>
 
-<%#= month_calendar(attribute: :start_time) do |date| %>
-  <%#= date %>
-<%# end %>
-
 <%= month_calendar events: @events do |date, events| %>
   <%= date %>
     <% events.each do |event| %>
