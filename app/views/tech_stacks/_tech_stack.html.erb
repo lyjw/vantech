@@ -1,0 +1,11 @@
+<div id="<%= dom_id(tech_stack) %>" style="width: 300">
+  <div>
+    <%= tech_stack.name %>
+  </div>
+  <div>
+    <%= link_to "Remove", tech_stack_path(tech_stack),
+                          data: {confirm: "Are you sure?"},
+                          method: :delete,
+                          remote: true %>
+  </div>
+</div>

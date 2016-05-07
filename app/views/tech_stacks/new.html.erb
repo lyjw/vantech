@@ -1,0 +1,9 @@
+<h1>Technologies</h1>
+<div id="tech_stack_form">
+  <%= render "/tech_stacks/form", tech_stack: @tech_stack %>
+</div>
+<div id="div_tech_stacks">
+  <% TechStack.all.each do |tech| %>
+  <%= render "/tech_stacks/tech_stack", tech_stack: tech %>
+  <% end %>
+</div>

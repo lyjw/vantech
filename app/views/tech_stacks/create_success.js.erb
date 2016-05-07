@@ -1,0 +1,3 @@
+$("#div_tech_stacks").prepend("<%= j render '/tech_stacks/tech_stack', tech_stack: @tech_stack, style: 'display: none' %>");
+$("#tech_stack_form").html("<%= j render '/tech_stacks/form', tech_stack: TechStack.new %>");
+$("#<%= dom_id(@tech_stack) %>").slideDown(1000);
