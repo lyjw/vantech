@@ -7,7 +7,7 @@ class TechStacksController < ApplicationController
   end
 
   def create
-    tech_stack_params = params.require(:tech_stack).permit(:title, :description, :price)
+    tech_stack_params = params.require(:tech_stack).permit(:title)
     @tech_stack = TechStack.new(tech_stack_params)
 
     if @tech_stack.save
