@@ -20,12 +20,8 @@ class TechStacksController < ApplicationController
   def show
     @tech_stack = TechStack.find params[:id]
     respond_to do |format|
-      # format.html { render :show }
-      # format.js {render json: @tech_stack }
-      # format.js { render js: "alert('Can\'t work, please refresh the page!');" }
       format.json { render json: @tech_stack.to_json }
     end
-    # render :show
   end
 
 end
