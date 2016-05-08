@@ -44,10 +44,10 @@ function initMap() {
   // });
   // $('input:submit').on("submit", function(event) {
   $('input:submit').on("click", function(event) {
-    console.log('beforeArray');
+    // console.log('beforeArray');
     event.preventDefault();
     var filtered = filterOrganizations();
-    console.log(filtered);
+    // console.log(filtered);
 
     // resets array and markers
     addressArray = []
@@ -58,20 +58,22 @@ function initMap() {
 
     // grabs just the address ignore other info
     for(var i = 0, len = filtered.length; i < len; i++) {
-      console.log(filtered[i].address);
+      // console.log(filtered[i].address);
       addressArray.push(filtered[i].address);
     }
 
     geocodeAddress(geocoder, map);
 
+    // console.log(filtered);
     createListOutput(filtered);
+
   });
 }
 
 function geocodeAddress(geocoder, resultsMap) {
   // var address = document.getElementById('address').value;
   // console.log( document.getElementById('address').value);
-  console.log(addressArray);
+  // console.log(addressArray);
   for(var i=0, len=addressArray.length; i < len; i++){
     var address = addressArray[i];
     geocoder.geocode({'address': address}, function(results, status) {
@@ -94,13 +96,13 @@ var createListingRow = function(o){
   return "<div class='organization-elem' " + "data_id= " + o.id + "> <img src= " + logo + ' height="42" ' + ' width="42" ' + "></img>" + "<a href=/public_organizations/" + o.id + ">" + o.name + "</a>" + "<p>" + o.employee_count + " employees</p>" + "</div>";
 };
 
-var createListOutput = function(organizations){
+var createListOutput = function(filtered_org){
   outputString = "";
-  for(var i = 0, len = organizations.length; i < len; i++) {
+  for(var i = 0, len = filtered_org.length; i < len; i++) {
   // createListingRow.forEach( function(org){
-  console.log(organizations[i]);
-    outputString.concat($("#organizations_list").html(createListingRow(organizations[i])));
+    outputString = outputString.concat(createListingRow(filtered_org[i]));
   };
+  $("#organizations_list").html(outputString);
 }
 
 
