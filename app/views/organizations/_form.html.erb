@@ -7,8 +7,7 @@
   <%= f.input :website %>
   <%= f.input :twitter %>
   Logo <%= f.file_field :logo %>
-  current location<%= @organization.logo.current_path %>
-  <%= f.check_box :published %>
+  Published <%= f.check_box :published %>
   <%= f.association :tech_stacks, as: :check_boxes %>
   <%= f.submit class: "btn btn-primary" %>
 <% end %>
