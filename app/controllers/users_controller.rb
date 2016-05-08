@@ -13,9 +13,10 @@ class UsersController < ApplicationController
     @user = User.new(params.require(:user).permit([:first_name, :last_name, :email, :password, :password_confirmation]))
 
     if @user.save
-      redirect_to root_path
+      sign_in(@user)
+      redirect_to root_path, notice: "Account Created!"
     else
-      render :new
+      render :new, notice: "Account not created"
     end
   end
 
