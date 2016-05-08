@@ -22,11 +22,11 @@ function (data) {
   $('#groups').html(htmlString);});
 
 });
-
 </script>
 
 <div id="groups"></div>
 
+<!-- Displaying Calendar with Events -->
 <%= month_calendar events: @events do |date, events| %>
   <%= date %>
     <% events.each do |event| %>
@@ -35,3 +35,39 @@ function (data) {
     </div>
   <% end %>
 <% end %>
+
+<br /><br />
+
+<!-- Search Bar -->
+<%= form_tag events_path do %>
+  <%= text_field_tag :search %>
+  <!-- preventDefault -->
+<% end %>
+
+<!-- Event List -->
+<ul id="event-list">
+  <% @events.each do |event| %>
+    <li title=<%= event.title %>>
+      <%= event.title %>
+    </li>
+  <% end %>
+</ul>
+
+<!-- Filter Function -->
+<script>
+var filter = function() {
+  $("input").on("keyup", function() {
+    var word = $('#search').val().toLowerCase();
+    if ($('#search').val()=="") {
+      $('#event-list > li').show();
+    } else if ($('li:contains("'+word+'")')){
+      $('#event-list > li').hide();
+      $("#event-list > li").each(function() {
+        var fil = $(this).find(".title").text().toLowerCase();
+        if(fil.search(word)>-1){$(this).show()}
+      });
+    }
+  });
+};
+filter();
+</script>
