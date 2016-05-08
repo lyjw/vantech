@@ -2,9 +2,13 @@ Rails.application.routes.draw do
 
 
   resources :tech_stacks, only: [:create, :new, :destroy]
+
   resources :organizations do
     get :logo, on: :member
   end
+
+  resources :public_organizations
+
 
   get '/about' => 'home#about'
 
@@ -35,7 +39,7 @@ Rails.application.routes.draw do
   end
 
   resources :news_searches
-  
+
   get "admin/users" => "admin#users"
 
 
