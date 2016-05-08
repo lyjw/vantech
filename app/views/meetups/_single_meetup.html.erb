@@ -1,0 +1,11 @@
+<div id="<%= dom_id(meetup) %>" style="width: 300">
+  <div>
+    <%= meetup.title %>
+  </div>
+  <div>
+    <%= link_to "Remove", meetup_path(meetup),
+                          data: {confirm: "Are you sure?"},
+                          method: :delete,
+                          remote: true %>
+  </div>
+</div>
