@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  root "admin#users"
+  root "organizations#index"
 
   resources :users
 
