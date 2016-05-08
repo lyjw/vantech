@@ -1,5 +1,4 @@
 class Meetup < ActiveRecord::Base
-
   def total_events
     conn = Faraday.new(url: 'https://api.meetup.com') do |faraday|
       faraday.request  :url_encoded             # form-encode POST params
@@ -16,5 +15,4 @@ class Meetup < ActiveRecord::Base
       Event.create(title: event["name"], url: event["link"], description: event["description"], group_name: event["group"]["name"], time: Time.at(event["time"]/1000).localtime, meetup_id: id)
     end
   end
-
 end
