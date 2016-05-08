@@ -1,36 +1,3 @@
-<script type="text/javascript">
-$(document).ready(function(){
-
-$.getJSON("https://api.meetup.com/HackerNestVan/events?photo-host=public&page=20&sig_id=204710864&sig=bd79ac9a7272dfe2a5a40a8a956b27ea0e1fdb85",
-
-function (data) {
-
-  var htmlString = "";
-
-  // TODO: Clean up date grabbing
-  var currentTime = Date.now();
-  var CurrentDate = new Date();
-  var twoMonthsLater = CurrentDate.setMonth(CurrentDate.getMonth() + 2);
-  // currentTime + (2628000000 * 2);
-
-  $.each(data, function (i, item) {
-    if (item.time > currentTime && item.time < twoMonthsLater) {
-      htmlString += '<h3><a href="' + item.link + '" target="_blank">' + item.name + ' on ' + moment(item.time).format('LL') + ' @ ' + moment(item.time).format('LT') + '</a></h3>';
-    };
-  });
-
-  $('#groups').html(htmlString);});
-
-});
-
-</script>
-
-<div id="groups"></div>
-
-<%#= month_calendar(attribute: :start_time) do |date| %>
-  <%#= date %>
-<%# end %>
-
 <%= month_calendar events: @events do |date, events| %>
   <%= date %>
     <% events.each do |event| %>
