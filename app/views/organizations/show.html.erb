@@ -1,6 +1,8 @@
-<div>
+<div class="container">
   <div style="display: inline">
-    <img src="<%= @organization.logo %>" />
+    <% if @organization.logo.present? %>
+      <%= image_tag @organization.logo.url %>
+    <% end %>
   </div>
   <div style="display: inline">
     <h2><%= @organization.name %></h2>

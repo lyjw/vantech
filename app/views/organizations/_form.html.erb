@@ -1,4 +1,4 @@
-<%= simple_form_for @organization do |f| %>
+<%= simple_form_for @organization, :html => { :multipart => true } do |f| %>
   <%= f.input :name %>
   <%= f.input :address %>
   <%= f.text_area :overview %>
@@ -6,7 +6,8 @@
   <%= f.input :tech_team_size %>
   <%= f.input :website %>
   <%= f.input :twitter %>
-  <%= f.input :logo %>
+  Logo <%= f.file_field :logo %>
+  current location<%= @organization.logo.current_path %>
   <%= f.check_box :published %>
   <%= f.association :tech_stacks, as: :check_boxes %>
   <%= f.submit class: "btn btn-primary" %>

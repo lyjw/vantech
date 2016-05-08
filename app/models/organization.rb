@@ -1,4 +1,5 @@
 class Organization < ActiveRecord::Base
+  require 'carrierwave/orm/activerecord'
   has_many :tech_taggings, dependent: :destroy
   has_many :tech_stacks, through: :tech_taggings
 
@@ -6,4 +7,6 @@ class Organization < ActiveRecord::Base
 
   has_many :pending_requests
   has_many :pending_mangers, through: :pending_requests, source: :user
+
+  mount_uploader :logo, LogoUploader
 end

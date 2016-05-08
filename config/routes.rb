@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
 
   resources :tech_stacks, only: [:create, :new, :destroy]
-  resources :organizations
+  resources :organizations do
+    get :logo, on: :member
+  end
 
   get '/about' => 'home#about'
 

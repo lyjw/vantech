@@ -1,37 +1,38 @@
-<h1>All Organizations</h1>
+<div class="container">
+  <h1>All Organizations</h1>
 
-<div>
-  <%= link_to "Add", new_organization_path %>
+  <div>
+    <%= link_to "Add", new_organization_path %>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Organization</th>
+          <th>Published</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @organizations.each do |org| %>
+        <tr id="<%= dom_id(org) %>">
+          <td><%= org.name %></td>
+          <td><%= org.published ? "Yes" : "No" %></td>
+          <td>
+            <%= link_to "Show", organization_path(org) %>
+
+
+            <%= link_to "Edit", edit_organization_path(org)%>
+
+            <%= link_to "Remove", organization_path(org),
+                                  data: {confirm: "Are you sure?"},
+                                  method: :delete,
+                                  remote: true %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
-
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Organization</th>
-        <th>Published</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @organizations.each do |org| %>
-      <tr id="<%= dom_id(org) %>">
-        <td><%= org.name %></td>
-        <td><%= org.published ? "Yes" : "No" %></td>
-        <td>
-          <%= link_to "Show", organization_path(org) %>
-
-
-          <%= link_to "Edit", edit_organization_path(org)%>
-
-          <%= link_to "Remove", organization_path(org),
-                                data: {confirm: "Are you sure?"},
-                                method: :delete,
-                                remote: true %>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<% end %>
