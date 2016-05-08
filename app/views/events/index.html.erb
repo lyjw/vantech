@@ -1,3 +1,35 @@
+<<<<<<< b9af34ed48bd7bb28b48961d57ec4bc33285131f
+=======
+<script type="text/javascript">
+$(document).ready(function(){
+
+$.getJSON("https://api.meetup.com/HackerNestVan/events?photo-host=public&page=20&sig_id=204710864&sig=bd79ac9a7272dfe2a5a40a8a956b27ea0e1fdb85",
+
+function (data) {
+
+  var htmlString = "";
+
+  // TODO: Clean up date grabbing
+  var currentTime = Date.now();
+  var CurrentDate = new Date();
+  var twoMonthsLater = CurrentDate.setMonth(CurrentDate.getMonth() + 2);
+  // currentTime + (2628000000 * 2);
+
+  $.each(data, function (i, item) {
+    if (item.time > currentTime && item.time < twoMonthsLater) {
+      htmlString += '<h3><a href="' + item.link + '" target="_blank">' + item.name + ' on ' + moment(item.time).format('LL') + ' @ ' + moment(item.time).format('LT') + '</a></h3>';
+    };
+  });
+
+  $('#groups').html(htmlString);});
+
+});
+</script>
+
+<div id="groups"></div>
+
+<!-- Displaying Calendar with Events -->
+>>>>>>> Add search bar and list, filter function with Ajax is buggy
 <%= month_calendar events: @events do |date, events| %>
   <%= date %>
     <% events.each do |event| %>
@@ -6,3 +38,39 @@
     </div>
   <% end %>
 <% end %>
+
+<br /><br />
+
+<!-- Search Bar -->
+<%= form_tag events_path do %>
+  <%= text_field_tag :search %>
+  <!-- preventDefault -->
+<% end %>
+
+<!-- Event List -->
+<ul id="event-list">
+  <% @events.each do |event| %>
+    <li title=<%= event.title %>>
+      <%= event.title %>
+    </li>
+  <% end %>
+</ul>
+
+<!-- Filter Function -->
+<script>
+var filter = function() {
+  $("input").on("keyup", function() {
+    var word = $('#search').val().toLowerCase();
+    if ($('#search').val()=="") {
+      $('#event-list > li').show();
+    } else if ($('li:contains("'+word+'")')){
+      $('#event-list > li').hide();
+      $("#event-list > li").each(function() {
+        var fil = $(this).find(".title").text().toLowerCase();
+        if(fil.search(word)>-1){$(this).show()}
+      });
+    }
+  });
+};
+filter();
+</script>
