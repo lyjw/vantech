@@ -2,8 +2,23 @@
 <div id="tech_stack_form">
   <%= render "/tech_stacks/form", tech_stack: @tech_stack %>
 </div>
-<div id="div_tech_stacks">
-  <% TechStack.all.each do |tech| %>
-  <%= render "/tech_stacks/tech_stack", tech_stack: tech %>
-  <% end %>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          Technology Name
+        </th>
+        <th>
+          Action
+        </th>
+      </tr>
+    </thead>
+    <tbody id="tbody_tech_stacks">
+      <% TechStack.all.each do |tech| %>
+      <%= render "/tech_stacks/tech_stack", tech_stack: tech %>
+      <% end %>
+    </tbody>
+  </table>
+
 </div>

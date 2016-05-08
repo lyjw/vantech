@@ -8,6 +8,6 @@
   <%= f.input :twitter %>
   <%= f.input :logo %>
   <%= f.check_box :published %>
-  <%= f.association :tech_taggings, input_html: {class: "chosen-select"} %>
+  <%= f.association :tech_stacks, as: :check_boxes %>
   <%= f.submit class: "btn btn-primary" %>
 <% end %>

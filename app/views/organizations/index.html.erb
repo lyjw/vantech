@@ -4,22 +4,34 @@
   <%= link_to "Add", new_organization_path %>
 </div>
 
-<% @organizations.each do |org| %>
-<div id="<%= dom_id(org) %>">
-  <div style="inline">
-    <%= org.name %>
-  </div>
-  <div style="inline">
-    <%= link_to "Show", organization_path(org) %>
-  </div>
-  <div style="inline">
-    <%= link_to "Edit", edit_organization_path(org)%>
-  </div>
-  <div style="inline">
-    <%= link_to "Remove", organization_path(org),
-                          data: {confirm: "Are you sure?"},
-                          method: :delete,
-                          remote: true %>
-  </div>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Organization</th>
+        <th>Published</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @organizations.each do |org| %>
+      <tr id="<%= dom_id(org) %>">
+        <td><%= org.name %></td>
+        <td><%= org.published ? "Yes" : "No" %></td>
+        <td>
+          <%= link_to "Show", organization_path(org) %>
+
+
+          <%= link_to "Edit", edit_organization_path(org)%>
+
+          <%= link_to "Remove", organization_path(org),
+                                data: {confirm: "Are you sure?"},
+                                method: :delete,
+                                remote: true %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+
 <% end %>
