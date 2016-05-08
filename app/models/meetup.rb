@@ -14,13 +14,11 @@ class Meetup < ActiveRecord::Base
     JSON.parse(response.body)
   end
 
-  def seed_events
-    two_months_later = Date.today + 2.months
-
+  def seed_events(range)
     total_events.each do |event|
       event_time = event["time"]/1000
 
-      if Time.at(event_time) < two_months_later
+      if Time.at(event_time) < range.to_time
         Event.create(title: event["name"], url: event["link"], description: event["description"], group_name: event["group"]["name"], time: Time.at(event_time).localtime, meetup_id: id)
       end
     end
