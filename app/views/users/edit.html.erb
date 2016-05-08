@@ -5,4 +5,7 @@
   <%= f.input :last_name %>
   <%= f.input :email %>
   <%= f.submit %>
+  <% if current_user.admin %>
+    <a href="#">Admin This User?</a>
+  <% end %>
 <% end %>
