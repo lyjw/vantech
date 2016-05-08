@@ -3,7 +3,7 @@
   <%= render "/meetups/form", meetup: @meetup %>
 </div>
 
-<div id="div_meetup">
+<div id="div_meetups">
   <% Meetup.all.each do |meetup| %>
     <%= render "/meetups/single_meetup", meetup: meetup %>
   <% end %>
