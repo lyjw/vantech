@@ -1,0 +1,7 @@
+<h1>News Search Terms:</h1>
+
+<%= render "search_form", search_term: NewsSearch.new %>
+
+<ul id="search_terms_list" class="list-group">
+  <%= render "search_terms", search_terms: @search_terms %>
+</ul>
