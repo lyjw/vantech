@@ -30,11 +30,32 @@
         <li><%= link_to "News", root_path %></li>
         <li><%= link_to "About", root_path %></li>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= current_user.first_name.capitalize %>
+            <span class="caret"></span></button>
+          </div>
+          </li>
+          <li><%= link_to "Log Out", sessions_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Sign In", new_session_path %></li>
+          <li class="active"><%= link_to "Sign Up", new_user_path %><span class="sr-only">(current)</span></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </nav>
 
 <div class="container">
+  <% if notice || alert %>
+    <hr>
+      <%= notice || alert %>
+    <hr>
+  <% end %>
+
   <%= yield %>
 </div>
 
