@@ -7,6 +7,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
+
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -23,6 +24,18 @@ gem 'rack-cors', require: 'rack/cors'
 
 gem 'chosen-rails'
 gem 'jquery-turbolinks'
+
+gem 'simple_calendar'
+
+gem 'faraday'
+gem 'delayed_job_active_record'
+gem 'delayed_job_web'
+
+gem 'carrierwave'
+gem 'fog'
+gem 'mini_magick'
+gem 'friendly_id'
+gem 'json'
 
 
 
