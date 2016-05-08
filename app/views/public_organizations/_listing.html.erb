@@ -1,0 +1,5 @@
+<% @organizations.each do |o| %>
+  <div>
+    <%= link_to o.name, public_organization_path(o) %>
+  </div>
+<% end %>

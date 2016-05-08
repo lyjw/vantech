@@ -1,0 +1,11 @@
+// Place all the styles related to the public_organizations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#large_map #map {
+	width: 400px;
+	height: 300px;
+}
+#small_map #map {
+	width: 150px;
+	height: 140px;
+}

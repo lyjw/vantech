@@ -1,0 +1,21 @@
+
+
+<body>
+
+  <%= form_tag public_organizations_path, method: 'get' do %>
+    <%= label_tag(:search, "Search for:") %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag("Search") %>
+  <% end %>
+
+  <div id="large_map">
+    <%= render "/public_organizations/map" %>
+  </div>
+
+  <div id="organizations" >
+    <%= render "/public_organizations/listing" %>
+  </div>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?callback=initMap">
+  </script>
+</body>
