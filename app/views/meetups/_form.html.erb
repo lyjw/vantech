@@ -1,4 +1,4 @@
 <%= simple_form_for meetup, remote: true do |f| %>
-  <%= f.input :title, label: "Meetup ID" %>
-  <%= f.submit data: {disable_with: "submitting..."}, class: "btn btn-primary" %>
+  <%= f.input :title, label: "Meetup ID", label_html: { class: "label_field_class" }, input_html: { class: "input_field_class form-control" } %>
+  <%= f.submit "Add Meetup", data: { disable_with: "submitting..." }, class: "btn btn-primary create" %>
 <% end %>
