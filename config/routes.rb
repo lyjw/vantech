@@ -32,6 +32,8 @@ Rails.application.routes.draw do
     delete :destroy, on: :collection
   end
 
+  resources :news_searches
+  
   get "admin/users" => "admin#users"
 
 

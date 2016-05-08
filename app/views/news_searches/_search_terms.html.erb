@@ -1,0 +1,6 @@
+<% search_terms.each do |term| %>
+  <li id="<%= dom_id(term) %>" class="list-group-item">
+    <%= term.search_term %>
+    <%= link_to "X", news_search_path(term), method: :delete, remote: true, class: "x-span", data: {confirm: "Are you sure?"} %>
+  </li>
+<% end %>
