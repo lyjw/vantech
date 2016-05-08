@@ -29,3 +29,29 @@ ul.nav.navbar-nav li a {
   font-weight: 400;
   font-size: 13px;
 }
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 45px;
+  background-color: #3E3F3A;
+  padding-top: 12px;
+
+  p, span {
+    color: white;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+  }
+
+  p {
+    float: right;
+  }
+
+}
