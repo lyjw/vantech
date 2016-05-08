@@ -7,7 +7,8 @@ class PublicOrganizationsController < ApplicationController
     respond_to do |format|
       format.html { render }
       format.json { render json: @organizations.to_json }
-      format.js { render :list_listings }
+      # format.js { render :list_listings }
+      format.js { render :create_map }
     end
   end
 
@@ -16,8 +17,6 @@ class PublicOrganizationsController < ApplicationController
     respond_to do |format|
       format.html { render }
       format.json { render json: @organization.to_json }
-      # format.js { render :list_organization }
-
     end
   end
 end
