@@ -8,7 +8,7 @@ class PublicOrganizationsController < ApplicationController
       format.html { render }
       format.json { render json: @organizations.to_json }
       # format.js { render :list_listings }
-      format.js { render :create_map }
+      # format.js { render :create_map }
     end
   end
 
