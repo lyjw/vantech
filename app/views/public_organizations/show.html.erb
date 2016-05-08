@@ -1,15 +1,17 @@
 <div id="organization-details" data_id=<%= @organization.id %>>
   <h1><%= @organization.name %></h1>
   <img src= <%= @organization.logo %> ></img>
-  <p>link_to <%= @organization.website %></p>
+  <a href = <%= "http://#{@organization.website}" %>><%= @organization.website %></a>
   <p><%= @organization.overview %></p>
-  <p><%= @organization.employee_count %></p>
-  <p><%= @organization.tech_team_size %></p>
+  <p>Team size <%= @organization.employee_count %></p>
+  <p>Tech team <%= @organization.tech_team_size %></p>
+  <p>Tech stack
   <%# @organizations.tech_stacks.each do |tag| %>
-    <div>
+    <span>
       <%#= tag.name%>
-    </div>
+    </span>
   <%# end %>
+  </p>
   <p><%= @organization.twitter %></p>
 </div>
 
