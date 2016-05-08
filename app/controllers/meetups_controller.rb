@@ -19,7 +19,8 @@ class MeetupsController < ApplicationController
 
     respond_to do |format|
       if @meetup.save
-        @meetup.seed_events
+        within_three_months = Date.today + 3.months
+        @meetup.seed_events(within_three_months)
 
         format.html { render }
         format.js { render :create_success }
