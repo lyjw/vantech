@@ -1,0 +1,2 @@
+module NewsSearchesHelper
+end
