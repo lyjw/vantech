@@ -1,0 +1,10 @@
+<h1>Events</h1>
+<div id="meetup_form">
+  <%= render "/meetups/form", meetup: @meetup %>
+</div>
+
+<div id="div_meetup">
+  <% Meetup.all.each do |meetup| %>
+    <%= render "/meetups/single_meetup", meetup: meetup %>
+  <% end %>
+</div>

@@ -1,0 +1,8 @@
+<%= month_calendar events: @events do |date, events| %>
+  <%= date %>
+    <% events.each do |event| %>
+    <div>
+      <%= link_to event.title, event.url %> on <%= event.time.localtime.strftime('%a %d %b') %> @ <%= event.time.localtime.strftime('%I:%M %p') %>
+    </div>
+  <% end %>
+<% end %>
