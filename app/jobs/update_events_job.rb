@@ -4,7 +4,7 @@ class UpdateEventsJob < ActiveJob::Base
   def perform(*args)
     # Do something later
     meetups = Meetup.all
-    within_three_months = Date.today + 3.months
+    within_three_months = Date.today + 10.months
 
     meetups.each do |meetup|
       meetup.seed_events(within_three_months)
