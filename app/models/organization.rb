@@ -6,6 +6,4 @@ class Organization < ActiveRecord::Base
 
   has_many :pending_requests
   has_many :pending_mangers, through: :pending_requests, source: :user
-
-
 end

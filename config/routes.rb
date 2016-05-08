@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
   resources :tech_stacks, only: [:create, :new, :destroy]
-  resources :organizations, only: [:show, :index, :create, :delete]
+  resources :organizations
 
 
   # The priority is based upon order of creation: first created -> highest priority.

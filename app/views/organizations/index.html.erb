@@ -1,0 +1,25 @@
+<h1>All Organizations</h1>
+
+<div>
+  <%= link_to "Add", new_organization_path %>
+</div>
+
+<% @organizations.each do |org| %>
+<div id="<%= dom_id(org) %>">
+  <div style="inline">
+    <%= org.name %>
+  </div>
+  <div style="inline">
+    <%= link_to "Show", organization_path(org) %>
+  </div>
+  <div style="inline">
+    <%= link_to "Edit", edit_organization_path(org)%>
+  </div>
+  <div style="inline">
+    <%= link_to "Remove", organization_path(org),
+                          data: {confirm: "Are you sure?"},
+                          method: :delete,
+                          remote: true %>
+  </div>
+</div>
+<% end %>

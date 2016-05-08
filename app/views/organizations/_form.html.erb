@@ -1,0 +1,13 @@
+<%= simple_form_for @organization do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.text_area :overview %>
+  <%= f.input :employee_count %>
+  <%= f.input :tech_team_size %>
+  <%= f.input :website %>
+  <%= f.input :twitter %>
+  <%= f.input :logo %>
+  <%= f.check_box :published %>
+  <%= f.association :tech_taggings, input_html: {class: "chosen-select"} %>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

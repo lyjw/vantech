@@ -1,0 +1,18 @@
+<div>
+  <div style="display: inline">
+    <img src="<%= @organization.logo %>" />
+  </div>
+  <div style="display: inline">
+    <h2><%= @organization.name %></h2>
+    <span><%= @organization.overview %></span><br />
+    <div>Employee Count : <%= @organization.employee_count %></div>
+    <div>Team Size : <%= @organization.tech_team_size %></div>
+    <div>Tech Stack : <% @organization.tech_stacks.each do |tech| %>
+                        <span><%= tech.name %></span>
+                      <% end %>
+    </div>
+  </div>
+  <div style="display: inline">
+    Placeholder for map
+  </div>
+</div>
