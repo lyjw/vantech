@@ -4,12 +4,4 @@ class Event < ActiveRecord::Base # :nodoc:
   def start_time
     self.time
   end
-
-  def self.search(search)
-    if search
-      where(['title ILIKE ?', "%#{search}%"])
-    else
-      all
-    end
-  end
 end
