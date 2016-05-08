@@ -1,0 +1,8 @@
+<% @organizations.each do |o| %>
+<%# organizations.each do |o| %>
+  <div class="organization-elem"data_id=<%= o.id %>>
+    <img src= <%= o.logo %> height="32" width="32"></img>
+    <%= link_to o.name, public_organization_path(o) %>
+    <p><%= o.employee_count %> employees
+  </div>
+<% end %>

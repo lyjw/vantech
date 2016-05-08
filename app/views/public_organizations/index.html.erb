@@ -1,0 +1,21 @@
+<head>
+  <script src="http://jiren.github.io/filter.js/filter.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+  <%= form_tag public_organizations_path, method: 'get', remote:true do %>
+    <%= label_tag(:search, "Search for:") %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag("Search") %>
+  <% end %>
+
+  <div id="large_map">
+    <%= render "/public_organizations/map" %>
+  </div>
+
+  <div id="organizations_list" >
+    <%= render "/public_organizations/listing" %>
+  </div>
+
+</body>
