@@ -1,35 +1,4 @@
-<<<<<<< b9af34ed48bd7bb28b48961d57ec4bc33285131f
-=======
-<script type="text/javascript">
-$(document).ready(function(){
-
-$.getJSON("https://api.meetup.com/HackerNestVan/events?photo-host=public&page=20&sig_id=204710864&sig=bd79ac9a7272dfe2a5a40a8a956b27ea0e1fdb85",
-
-function (data) {
-
-  var htmlString = "";
-
-  // TODO: Clean up date grabbing
-  var currentTime = Date.now();
-  var CurrentDate = new Date();
-  var twoMonthsLater = CurrentDate.setMonth(CurrentDate.getMonth() + 2);
-  // currentTime + (2628000000 * 2);
-
-  $.each(data, function (i, item) {
-    if (item.time > currentTime && item.time < twoMonthsLater) {
-      htmlString += '<h3><a href="' + item.link + '" target="_blank">' + item.name + ' on ' + moment(item.time).format('LL') + ' @ ' + moment(item.time).format('LT') + '</a></h3>';
-    };
-  });
-
-  $('#groups').html(htmlString);});
-
-});
-</script>
-
-<div id="groups"></div>
-
 <!-- Displaying Calendar with Events -->
->>>>>>> Add search bar and list, filter function with Ajax is buggy
 <%= month_calendar events: @events do |date, events| %>
   <%= date %>
     <% events.each do |event| %>
@@ -42,33 +11,45 @@ function (data) {
 <br /><br />
 
 <!-- Search Bar -->
-<%= form_tag events_path do %>
-  <%= text_field_tag :search %>
-  <!-- preventDefault -->
-<% end %>
+<input type="text" id="search" name="search" placeholder="Search"></text>
+<i class="fa fa-search" aria-hidden="true"></i>
 
-<!-- Event List -->
+<!-- Event List: Load all but only show top 3 -->
 <ul id="event-list">
-  <% @events.each do |event| %>
-    <li title=<%= event.title %>>
-      <%= event.title %>
+  <% @events.each_with_index do |event, index| %>
+  <% if index < 3 %>
+    <li class='event-listing'>
+      <%= "#{event.title} on #{event.time.asctime[0..15]}" %>
+      <!-- TODO: Can we strip this better? -->
     </li>
+    <% else %>
+    <li class='event-listing' style="display:none">
+      <%= "#{event.title} on #{event.time.asctime[0..15]}" %>
+    </li>
+    <% end %>
   <% end %>
 </ul>
 
-<!-- Filter Function -->
+<!-- Search Filter Function -->
 <script>
 var filter = function() {
-  $("input").on("keyup", function() {
-    var word = $('#search').val().toLowerCase();
-    if ($('#search').val()=="") {
-      $('#event-list > li').show();
-    } else if ($('li:contains("'+word+'")')){
-      $('#event-list > li').hide();
-      $("#event-list > li").each(function() {
-        var fil = $(this).find(".title").text().toLowerCase();
-        if(fil.search(word)>-1){$(this).show()}
-      });
+  $("#search").on("keyup", function() {
+    var filter = $('#search').val();
+    if ($('#search').val()==="") {
+      $('#event-list li').hide();
+      // TODO: hide bullets in css file
+      for (var i = 1; i < 4; i++) {
+        $('#event-list > li:nth-child(' + i + ')').show();
+      }
+    } else {
+      $("#event-list li").each(function() {
+        // TODO: Can we restrict this to top 3 as well
+        if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+          $(this).fadeOut();
+        } else {
+          $(this).show();
+        }
+      })
     }
   });
 };
