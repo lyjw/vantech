@@ -12,7 +12,13 @@ function initMap() {
   var geocoder = new google.maps.Geocoder();
 
   // geocodeAddress(geocoder, map);
-  document.getElementById('submit').addEventListener('click', function() {
+  // document.getElementById('search').addEventListener('click', function() {
+  //   geocodeAddress(geocoder, map);
+  // });
+  $('#map').on('ready', function() {
+    geocodeAddress(geocoder, map);
+  });
+  $('input#search').on('keyup', function() {
     geocodeAddress(geocoder, map);
   });
 
@@ -40,6 +46,10 @@ function geocodeAddress(geocoder, resultsMap) {
 
 
 $(document).ready(function(){
+
+  var searchOutput = function(){};
+  var filterAndOutput = function(){};
+
   $.ajax({
     method: "GET",
     url: baseUrl + "public_organizations.json",
@@ -48,7 +58,7 @@ $(document).ready(function(){
         // console.log(organizations[i].address);
         addressArray.push(organizations[i].address);
       }
-      console.log(addressArray);
+      // console.log(addressArray);
     },
     error:  function(){
       console.log("Error loading addresses. Please try again");

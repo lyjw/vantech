@@ -1,0 +1,3 @@
+$("#organizations").prepend("<%= j render '/organization/organization', organization: @organization, style: 'display: none' %>");
+// $("#organization-form").html("<%= j render '/organization/_listing', organization: Organization.new %>");
+$("#<%= dom_id(@organization) %>").slideDown(1000);

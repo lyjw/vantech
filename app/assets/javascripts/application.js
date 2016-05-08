@@ -22,4 +22,5 @@
 //= require bootstrap-sprockets
 //= require chosen-jquery
 
+
 //= require_tree .

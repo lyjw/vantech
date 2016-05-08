@@ -1,12 +1,13 @@
 class PublicOrganizationsController < ApplicationController
   def index
     search = params[:search]
-    @organizations = Organization.where("published = TRUE AND name like ?", "%#{search}%" )
-    # @organizations = Organization.where(published: true)
+    # @organizations = Organization.where("published = TRUE AND name like ?", "%#{search}%" )
+    @organizations = Organization.where(published: true)
     # @organizations = Organization.search()
     respond_to do |format|
       format.html { render }
       format.json { render json: @organizations.to_json }
+      format.js { render :list_listings }
     end
   end
 
@@ -15,6 +16,8 @@ class PublicOrganizationsController < ApplicationController
     respond_to do |format|
       format.html { render }
       format.json { render json: @organization.to_json }
+      # format.js { render :list_organization }
+
     end
   end
 end
