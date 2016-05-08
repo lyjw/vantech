@@ -10,23 +10,35 @@
   <% end %>
 <% end %>
 
-<br /><br />
-
 <!-- Search Bar -->
-<input type="text" id="search" name="search" placeholder="Search"></text>
-<i class="fa fa-search" aria-hidden="true"></i>
+<form role="form">
+  <div class="form-group">
+    <input type="text" class="form-control empty" id="search" placeholder="&#xF002; Search"/>
+  </div>
+</form>
+
+<!-- Search Bar to include Font Awesome Search Icon -->
+<script>
+$('#iconified').on('keyup', function() {
+  var input = $(this);
+  if(input.val().length === 0) {
+      input.addClass('empty');
+  } else {
+      input.removeClass('empty');
+  }
+});
+</script>
 
 <!-- Event List: Load all but only show top 3 -->
 <ul id="event-list">
   <% @events.each_with_index do |event, index| %>
   <% if index < 3 %>
-    <li class='event-listing'>
-      <%= "#{event.title} on #{event.time.asctime[0..15]}" %>
-      <!-- TODO: Can we strip this better? -->
+    <li class='event-listing' data-date=<%= event.time %>>
+    <%= link_to event.title, event.url %> on <%= event.time.localtime.strftime('%a %d %b') %> @ <%= event.time.localtime.strftime('%I:%M %p') %>
     </li>
     <% else %>
     <li class='event-listing' style="display:none">
-      <%= "#{event.title} on #{event.time.asctime[0..15]}" %>
+      <%= link_to event.title, event.url %> on <%= event.time.localtime.strftime('%a %d %b') %> @ <%= event.time.localtime.strftime('%I:%M %p') %>
     </li>
     <% end %>
   <% end %>
@@ -37,15 +49,14 @@
 var filter = function() {
   $("#search").on("keyup", function() {
     var filter = $('#search').val();
-    if ($('#search').val()==="") {
+    if ($('#search').val().length === 0) {
       $('#event-list li').hide();
-      // TODO: hide bullets in css file
       for (var i = 1; i < 4; i++) {
         $('#event-list > li:nth-child(' + i + ')').show();
       }
     } else {
       $("#event-list li").each(function() {
-        // TODO: Can we restrict this to top 3 as well
+        // TODO [STRETCH]: Can we restrict this to top 3 as well?
         if ($(this).text().search(new RegExp(filter, "i")) < 0) {
           $(this).fadeOut();
         } else {

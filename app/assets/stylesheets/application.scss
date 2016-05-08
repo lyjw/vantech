@@ -55,4 +55,26 @@ body {
   }
 
 }
- @import "font-awesome";
+
+#event-list {
+  list-style-type: none;
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 100px;
+  font-size: 23px;
+}
+
+#search {
+  width: 95%;
+  float: right;
+  margin-bottom: 15px;
+}
+
+input.empty {
+    font-family:Arial, FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+}
+
+@import "font-awesome";

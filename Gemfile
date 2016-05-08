@@ -13,7 +13,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'bootstrap-sass'
@@ -38,7 +37,6 @@ gem 'fog'
 gem 'mini_magick'
 gem 'friendly_id'
 gem 'json'
-gem 'meetup_client'
 
 gem 'google-search'
 
