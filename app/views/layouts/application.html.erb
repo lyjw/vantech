@@ -7,9 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-
-  <nav class="navbar navbar-default navbar-static-top">
+  <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -29,7 +27,7 @@
         <li><%= link_to "Directory", organizations_path %><span class="sr-only">(current)</span></li>
         <li><%= link_to "Events", events_path %></li>
         <li><%= link_to "News", root_path %></li>
-        <li><%= link_to "About", root_path %></li>
+        <li><%= link_to "About", about_path %></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
@@ -68,12 +66,12 @@
   <%= yield %>
 </div>
 
-<footer class="footer">
+<nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container">
     <span>&#169; 2016</span>
     <p>Built and maintained by students from <a href="http://www.codecore.ca">CodeCore</a></p>
   </div>
-</footer>
+</nav>
 
 </body>
 

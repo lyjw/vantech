@@ -30,13 +30,13 @@ ul.nav.navbar-nav li a {
 }
 
 body {
+  margin-top: 60px;
   /* Margin bottom by footer height */
   margin-bottom: 60px;
   font-family: 'Work Sans', sans-serif;
 }
 
-.footer {
-  position: absolute;
+.navbar-fixed-bottom {
   bottom: 0;
   width: 100%;
   height: 45px;
