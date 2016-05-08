@@ -1,3 +1,26 @@
 // Place all the styles related to the meetups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.label_field_class {
+  margin-right: 20px;
+  font-size: 18px;
+}
+
+.input_field_class.form-control {
+  display: inline;
+  width: 400px;
+  height: 15px;
+
+}
+
+.error {
+  display: block;
+  color: red;
+}
+
+.btn-primary.create {
+  display: inline;
+  height: 15px;
+  line-height: 2px;
+}

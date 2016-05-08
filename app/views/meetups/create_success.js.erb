@@ -1,0 +1,3 @@
+$("#div_meetup").prepend("<%= j render '/meetups/single_meetup', meetup: @meetup, style: 'display: none' %>");
+$("#meetup_form").html("<%= j render '/meetups/form', meetup: Meetup.new %>");
+$("#<%= dom_id(@meetup) %>").slideDown(1000);
