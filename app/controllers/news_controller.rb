@@ -1,10 +1,10 @@
 class NewsController < ApplicationController
   def index
-    if params[:q]
-      page = params[:page] || 1
-      @news = GoogleCustomSearchApi.search(params[:q], page: page)
-    end
     string_search_terms
+    if @terms
+      page = params[:page] || 1
+      @news = GoogleCustomSearchApi.search(@terms, page: page)
+    end
   end
 
   def string_search_terms
