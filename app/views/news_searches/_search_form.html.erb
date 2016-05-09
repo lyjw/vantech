@@ -1,6 +1,5 @@
-<%= simple_form_for search_term, remote: true do |f| %>
-  <div>
-    <%= f.input :search_term %>
-  </div>
-  <%= f.submit %>
+<%= simple_form_for search_term, class: "form-group", remote: true do |search| %>
+  <%= search.input :search_term, class: "form-control", placeholder: "Search Term"%>
+  <%= search.submit class: "btn btn-primary", value: "Add Search Term" %>
 <% end %>
+<br />
