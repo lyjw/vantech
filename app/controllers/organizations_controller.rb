@@ -3,6 +3,21 @@ class OrganizationsController < ApplicationController
     @organization = Organization.new
   end
 
+  def home
+    @addresses = Organization.all.map { |o| o.address }
+
+    search = params[:search]
+    
+    @organizations = Organization.where(published: true)
+    # @organizations = Organization.search()
+    respond_to do |format|
+      format.html { render }
+      format.json { render json: @organizations.to_json }
+      # format.js { render :list_listings }
+      # format.js { render :create_map }
+    end
+  end
+
   def index
     @organizations = Organization.all
     respond_to do |format|
@@ -22,7 +37,7 @@ class OrganizationsController < ApplicationController
   end
 
   def show
-    @organization = Organization.find params[:id]
+    @organization = Organization.where(published: true).find(params[:id])
     respond_to do |format|
       format.html { render }
       format.json { render json: @organization.to_json }
