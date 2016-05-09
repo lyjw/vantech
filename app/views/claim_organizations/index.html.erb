@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Actions</th>
+  </thead>
+
+  <tbody>
+    <% @pendings.each do |pending_user| %>
+      <tr>
+        <td><%= pending_user.user.first_name %></td>
+        <td><%= pending_user.user.last_name %></td>
+        <td><%= pending_user.user.email %></td>
+        <td><%= pending_user.organization.name %></td>
+        <td><%= link_to "Accept",  edit_claim_organization_path(pending_user)%> | <%= link_to "Reject", claim_organization_path(pending_user), method: :delete, data: {confirm:"Are you sure holmes?"} %></td>
+      </tr>
+    <% end %>
+</tbody>
+</table>
