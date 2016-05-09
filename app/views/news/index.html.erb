@@ -10,10 +10,8 @@
             <% if item['pagemap'] &&
                   item['pagemap']['cse_thumbnail'] &&
                   img = item.pagemap.cse_thumbnail.first %>
-              <div class='col-sm-2'>
+              <div class='col-sm-12'>
                 <%= image_tag(img.src, width: '200px') %>
-              </div>
-              <div class='col-sm-10'>
                 <%= item.htmlSnippet.html_safe %>
               </div>
             <% else %>
