@@ -1,0 +1,5 @@
+<h1>Hello <%= current_user.first_name %></h1>
+<p>You are about to submit a request to the organization <%= @pending.organization.name %></p>
+
+<%= link_to "Continue", claim_organizations_path({organization: @pending.organization}), method: :post %> |
+<%= link_to "Don't Continue", organization_path(@pending.organization) %>
