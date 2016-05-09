@@ -1,23 +1,38 @@
-<div id="organization-details" data_id=<%= @organization.id %>>
-  <h1><%= @organization.name %></h1>
-  <%= image_tag @organization.logo.url %>
-  <a href = <%= "http://#{@organization.website}" %>><%= @organization.website %></a>
-  <p><%= @organization.overview %></p>
-  <p>Team size <%= @organization.employee_count %></p>
-  <p>Tech team <%= @organization.tech_team_size %></p>
-  <p>Tech stack
-  <%# @organizations.tech_stacks.each do |tag| %>
-    <span>
-      <%#= tag.name%>
-    </span>
-  <%# end %>
-  </p>
-  <p><%= @organization.twitter %></p>
+<div id="organization-details" data_id="<%= @organization.id %>">
+
+  <div class="row">
+
+    <div class="col-md-3">
+      <%= image_tag @organization.logo.url %>
+
+      <p>Team Size: <%= @organization.employee_count %></p>
+      <p>Tech Team: <%= @organization.tech_team_size %></p>
+      <p>Tech Stack:
+      <% @organization.tech_stacks.each do |tech| %>
+        <span>
+          <%= tech.name %>
+        </span>
+      <% end %>
+
+    </div>
+
+    <!-- <div class="small_map">
+      <%= render "/organizations/map" %>
+    </div> -->
+
+    <div class="col-md-9 org-info">
+      <h1><%= @organization.name %></h1>
+      (<%= link_to "visit website", "http://#{@organization.website}"%>)
+
+      <p><%= @organization.overview %></p>
+
+      </p>
+      <p><%= @organization.twitter %></p>
+
+    </div>
+
 </div>
 
-<div id="small_map">
-  <%= render "/organizations/map" %>
-</div>
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?callback=initMap">
 </script>
