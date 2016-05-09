@@ -56,29 +56,4 @@ body {
 
 }
 
-#event-list {
-  list-style-type: none;
-  text-align: center;
-  margin-top: 25px;
-  margin-bottom: 100px;
-  font-size: 23px;
-}
-
-#search {
-  margin-bottom: 15px;
-}
-
-#calendar-event {
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border-color: "lightgrey";
-}
-
-input.empty {
-    font-family:Arial, FontAwesome;
-    font-style: normal;
-    font-weight: normal;
-    text-decoration: inherit;
-}
-
 @import "font-awesome";
