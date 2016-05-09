@@ -22,10 +22,6 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_admin!
-    puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-    puts "Current user: #{current_user}"
-    puts "Admin: #{current_user.admin}"
-    puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     redirect_to root_path, notice: "You do not have the access rights to that page" unless current_user.admin
   end
 end
