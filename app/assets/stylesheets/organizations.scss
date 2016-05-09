@@ -8,7 +8,7 @@
   margin-bottom: 40px;
 }
 
-#small_map #map {
+.small_map #map {
 	width: 150px;
 	height: 140px;
 }
@@ -21,4 +21,8 @@
   display: block;
   margin-top: 40px;
   font-size: 15px;
+}
+
+.org-info p {
+  margin-top: 20px;
 }
