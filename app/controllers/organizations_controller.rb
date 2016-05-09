@@ -15,7 +15,6 @@ class OrganizationsController < ApplicationController
 
   def create
     @organization = Organization.new(organization_params)
-    @organization.user_id = current_user.id
     if @organization.save
       redirect_to organization_path(@organization)
     else
