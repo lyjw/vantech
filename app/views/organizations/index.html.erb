@@ -1,25 +1,26 @@
-<h1>All Organizations</h1>
+<div class="container">
+  <h1>All Organizations</h1>
 
-<div>
-  <%= link_to "Add", new_organization_path %>
-</div>
+  <div>
+    <%= link_to "Add", new_organization_path %>
+  </div>
 
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Organization</th>
-        <th>Published</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @organizations.each do |org| %>
-      <tr id="<%= dom_id(org) %>">
-        <td><%= org.name %></td>
-        <td><%= org.published ? "Yes" : "No" %></td>
-        <td>
-          <%= link_to "Show", organization_path(org) %>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Organization</th>
+          <th>Published</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @organizations.each do |org| %>
+        <tr id="<%= dom_id(org) %>">
+          <td><%= org.name %></td>
+          <td><%= org.published ? "Yes" : "No" %></td>
+          <td>
+            <%= link_to "Show", organization_path(org) %>
 
             <% if current_user && (current_user.admin || org.user_id == current_user.id) %>
               <%= link_to "Edit", edit_organization_path(org)%>
@@ -35,3 +36,4 @@
       </tbody>
     </table>
   </div>
+</div>
