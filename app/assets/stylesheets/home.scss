@@ -2,15 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#tech-stack-dropdown {
+#tech-stacks {
   float: left;
+  width: 20%;
 }
 
-#team-size-dropdown {
+#team-size {
   float: right;
+  width: 20%
 }
 
-.btn-custom {
-  background: #3e3f3a;
-  color: white;
+#org-search {
+  width: 20%;
+}
+
+#org-search-text.empty {
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
 }
