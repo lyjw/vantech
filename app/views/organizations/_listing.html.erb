@@ -1,0 +1,7 @@
+<% @organizations.each do |organization| %>
+  <div class="organization-elem" data_id="<%= organization.id %>">
+    <%= image_tag organization.logo, height: "32", width: "32" %>
+    <%= link_to organization.name, organization_path(organization) %>
+    <p><%= organization.employee_count %> employees
+  </div>
+<% end %>

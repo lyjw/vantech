@@ -1,20 +1,23 @@
-<div class="container">
-  <div style="display: inline">
-    <% if @organization.logo.present? %>
-      <%= image_tag @organization.logo.url %>
-    <% end %>
-  </div>
-  <div style="display: inline">
-    <h2><%= @organization.name %></h2>
-    <span><%= @organization.overview %></span><br />
-    <div>Employee Count : <%= @organization.employee_count %></div>
-    <div>Team Size : <%= @organization.tech_team_size %></div>
-    <div>Tech Stack : <% @organization.tech_stacks.each do |tech| %>
-                        <span><%= tech.name %></span>
-                      <% end %>
-    </div>
-  </div>
-  <div style="display: inline">
-    Placeholder for map
-  </div>
+<div id="organization-details" data_id=<%= @organization.id %>>
+  <h1><%= @organization.name %></h1>
+  <%= image_tag @organization.logo.url %>
+  <a href = <%= "http://#{@organization.website}" %>><%= @organization.website %></a>
+  <p><%= @organization.overview %></p>
+  <p>Team size <%= @organization.employee_count %></p>
+  <p>Tech team <%= @organization.tech_team_size %></p>
+  <p>Tech stack
+  <%# @organizations.tech_stacks.each do |tag| %>
+    <span>
+      <%#= tag.name%>
+    </span>
+  <%# end %>
+  </p>
+  <p><%= @organization.twitter %></p>
 </div>
+
+<div id="small_map">
+  <%= render "/organizations/map" %>
+</div>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?callback=initMap">
+</script>

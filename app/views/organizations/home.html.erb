@@ -1,0 +1,18 @@
+<div id="large_map">
+  <%= render "/organizations/map" %>
+</div>
+
+<div id="org-search-bar form-group">
+  <%= form_tag organizations_path, method: 'get', remote:true do %>
+    <%= label_tag(:search, "Search for:") %>
+    <%= text_field_tag :search, params[:search], class: "form-control" %>
+    <%= submit_tag("Search") %>
+  <% end %>
+</div>
+
+<div id="organizations_list" >
+  <%= render "/organizations/listing" %>
+</div>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap">
+</script>
