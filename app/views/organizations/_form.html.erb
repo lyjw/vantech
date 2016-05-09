@@ -1,13 +1,15 @@
-<%= simple_form_for @organization, :html => { :multipart => true } do |f| %>
-  <%= f.input :name %>
-  <%= f.input :address %>
-  <%= f.text_area :overview %>
-  <%= f.input :employee_count %>
-  <%= f.input :tech_team_size %>
-  <%= f.input :website %>
-  <%= f.input :twitter %>
-  Logo <%= f.file_field :logo %>
-  Published <%= f.check_box :published %>
+<%= simple_form_for @organization, html: { multipart: true, role: "form" } do |f| %>
+  <%= f.input :name, wrapper_html: {class: "form-group"}, input_html: {class: "form-control"} %>
+  <%= f.input :address, wrapper_html: {class: "form-group"}, input_html: {class: "form-control"}  %>
+  <%= f.input :overview, label: "Overview", wrapper_html: {class: "form-group"}, input_html: {class: "form-control"} %>
+  <%= f.input :employee_count, wrapper_html: {class: "form-group"}, input_html: {class: "form-control"}  %>
+  <%= f.input :tech_team_size, wrapper_html: {class: "form-group"}, input_html: {class: "form-control"}  %>
+  <%= f.input :website, wrapper_html: {class: "form-group"}, input_html: {class: "form-control"}  %>
+  <%= f.input :twitter, wrapper_html: {class: "form-group"}, input_html: {class: "form-control"}  %>
+  <% if current_user && current_user.admin %>
+    <%= f.input :published  %>
+  <% end %>
+  <%= f.label :logo %><%= f.file_field :logo %>
   <%= f.association :tech_stacks, as: :check_boxes %>
   <%= f.submit class: "btn btn-primary" %>
 <% end %>

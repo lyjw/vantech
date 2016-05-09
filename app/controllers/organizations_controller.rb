@@ -1,4 +1,6 @@
 class OrganizationsController < ApplicationController
+  before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy]
+
   def new
     @organization = Organization.new
   end
@@ -13,7 +15,7 @@ class OrganizationsController < ApplicationController
 
   def create
     @organization = Organization.new(organization_params)
-
+    @organization.user_id = current_user.id
     if @organization.save
       redirect_to organization_path(@organization)
     else
@@ -31,10 +33,16 @@ class OrganizationsController < ApplicationController
 
   def edit
     @organization = Organization.find params[:id]
+    if current_user.admin == false && @organization.user_id != current_user.id
+      redirect_to organizations_path
+    end
   end
 
   def update
     @organization = Organization.find params[:id]
+    if current_user.admin == false && @organization.user_id != current_user.id
+      redirect_to organizations_path
+    end
 
     if @organization.update organization_params
       redirect_to organizations_path
@@ -45,6 +53,10 @@ class OrganizationsController < ApplicationController
 
   def destroy
     @organization = Organization.find params[:id]
+    if current_user.admin == false && @organization.user_id != current_user.id
+      redirect_to organizations_path
+    end
+
     @organization.destroy
     respond_to do |format|
       format.html { redirect_to organizations_path }

@@ -1,4 +1,5 @@
 class TechStacksController < ApplicationController
+  before_action :authenticate_admin!, only:[:create, :destroy]
 
   def index
     @tech_stacks = TechStack.all
