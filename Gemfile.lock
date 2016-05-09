@@ -60,7 +60,10 @@ GEM
       coffee-rails (>= 3.2)
       railties (>= 3.0)
       sass-rails (>= 3.2)
+<<<<<<< HEAD
     chronic (0.10.2)
+=======
+>>>>>>> 5867f0c2e54ef7b41d8d1a34e5782d4fd1f200db
     coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -120,6 +123,10 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+<<<<<<< HEAD
+=======
+    meetup_client (0.1.0)
+>>>>>>> 5867f0c2e54ef7b41d8d1a34e5782d4fd1f200db
     method_source (0.8.2)
     mime-types (3.0)
       mime-types-data (~> 3.2015)
