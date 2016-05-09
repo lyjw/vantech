@@ -11,7 +11,7 @@ class OrganizationsController < ApplicationController
     search = params[:search]
 
     @organizations = Organization.where(published: true)
-    # @organizations = Organization.search()
+
     respond_to do |format|
       format.html { render }
       format.json { render json: @organizations.to_json }
@@ -92,6 +92,6 @@ class OrganizationsController < ApplicationController
     params.require(:organization).permit([:name, :address, :logo,
                                          :overview, :employee_count,
                                          :tech_team_size, :website,
-                                         :twitter, :published, {tech_stack_ids: []}])
+                                         :twitter, :published, {tech_stack_ids: []}, {images: []}])
   end
 end

@@ -2,17 +2,31 @@
 
   <div class="row">
 
-    <div class="col-md-3">
+    <div class="col-md-3 col-md-offset-1 text-center">
       <%= image_tag @organization.logo.url %>
 
-      <p>Team Size: <%= @organization.employee_count %></p>
-      <p>Tech Team: <%= @organization.tech_team_size %></p>
-      <p>Tech Stack:
-      <% @organization.tech_stacks.each do |tech| %>
-        <span>
-          <%= tech.name %>
-        </span>
-      <% end %>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><b>Team Size</b></td>
+            <td><%= @organization.employee_count %></td>
+          </tr>
+          <tr>
+            <td><b>Tech Team</b></td>
+            <td><%= @organization.tech_team_size %></td>
+          </tr>
+          <tr>
+            <td><b>Tech Stack</b></td>
+            <td>
+              <% @organization.tech_stacks.each do |tech| %>
+                <span>
+                  <%= tech.name %>
+                </span>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
     </div>
 
@@ -20,14 +34,14 @@
       <%= render "/organizations/map" %>
     </div> -->
 
-    <div class="col-md-9 org-info">
-      <h1><%= @organization.name %></h1>
-      (<%= link_to "visit website", "http://#{@organization.website}"%>)
+    <div class="col-md-6 org-info">
+      <h1><%= link_to @organization.name, "http://#{@organization.website}" %></h1>
+
+      <% if @organization.images.any? %>
+        <%= render "/organizations/image_carousel" %>
+      <% end %>
 
       <p><%= @organization.overview %></p>
-
-      </p>
-      <p><%= @organization.twitter %></p>
 
     </div>
 
@@ -42,6 +56,6 @@
 
 </div>
 
-<script async defer
+<!-- <script async defer
 src="https://maps.googleapis.com/maps/api/js?callback=initMap">
-</script>
+</script> -->

@@ -11,5 +11,6 @@
   <% end %>
   <%= f.label :logo %><%= f.file_field :logo %>
   <%= f.association :tech_stacks, as: :check_boxes %>
+  <%= f.file_field :images, multiple: true %>
   <%= f.submit class: "btn btn-primary" %>
 <% end %>

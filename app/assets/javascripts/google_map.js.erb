@@ -73,28 +73,26 @@ function geocodeAddress(geocoder, resultsMap) {
         });
 
         markers.push(marker);
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
       }
     });
   }
 }
 
-var createListingRow = function(o){
-  var logo = o.logo ? o.logo : ""
-  return "<div class='organization-elem' " + "data_id= " + o.id + "><img src= " + logo + ' height="42" ' + ' width="42" ' + "></img>" + "<a href=/organizations/home/" + o.id + ">" + o.name + "</a>" + "<p>" + o.employee_count + " employees</p>" + "</div>";
-};
-
-var createListOutput = function(filtered_org){
-  outputString = "";
-
-  for(var i = 0, len = filtered_org.length; i < len; i++) {
-    outputString = outputString.concat(createListingRow(filtered_org[i]));
-  }
-
-  $("#organizations_list").html(outputString);
-
-}
+// var createListingRow = function(o){
+//   var logo = o.logo ? o.logo : ""
+//   return "<div class='organization-elem' " + "data_id= " + o.id + "><img src= " + logo + ' height="42" ' + ' width="42" ' + "></img>" + "<a href=/organizations/home/" + o.id + ">" + o.name + "</a>" + "<p>" + o.employee_count + " employees</p>" + "</div>";
+// };
+//
+// var createListOutput = function(filtered_org){
+//   outputString = "";
+//
+//   for(var i = 0, len = filtered_org.length; i < len; i++) {
+//     outputString = outputString.concat(createListingRow(filtered_org[i]));
+//   }
+//
+//   $("#organizations_list").html(outputString);
+//
+// }
 
   //
   // var filter_json = (function(){
@@ -129,9 +127,9 @@ var createListOutput = function(filtered_org){
           addressArray.push(orgs[i].address);
         }
 
-        console.log(addressArray);
+        $('#org-search').trigger('click');
       },
-      error:  function(){
+      error: function(){
         console.log("Error loading addresses. Please try again");
       }
     });
