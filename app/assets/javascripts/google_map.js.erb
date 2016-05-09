@@ -1,12 +1,10 @@
 var baseUrl = "http://localhost:3000/";
 // var addressArray = ["142 W Hastings St, Vancouver, BC V6B 1G8", "Ottawa Ont"];
-// var addressArray = ["142 W Hastings St, Vancouver, BC V6B 1G8", "Ottawa Ont"];
-var addressArray = [];
+// var addressArray = [];
 var orgs = [];
-var markers =[];
+var markers = [];
 
 // enable search
-
 var searchTest = function (org){
 
   var inputString = $("input#search").val();
@@ -19,34 +17,23 @@ var searchTest = function (org){
   }
 }
 
-var filterOrganizations = function (){
+var filterOrganizations = function(orgs) {
   return orgs.filter(searchTest);
 }
 
-
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 8,
-    center: {lat: 49.246292, lng: -123.116226}
+    zoom: 12,
+    center: {lat: 49.2820, lng: -123.1171}
   });
+
   var geocoder = new google.maps.Geocoder();
 
-  // geocodeAddress(geocoder, map);
-  // document.getElementById('search').addEventListener('click', function() {
-  //   geocodeAddress(geocoder, map);
-  // });
-  // $('#map').on('ready', function() {
-  //   geocodeAddress(geocoder, map);
-  // });
-  // $('input#search').on('keyup', function() {
-  //   // console.log(addressArray)
-  //   geocodeAddress(geocoder, map);
-  // });
-  // $('input:submit').on("submit", function(event) {
+  console.log(addressArray);
+
   $('input:submit').on("click", function(event) {
-    // console.log('beforeArray');
     event.preventDefault();
-    var filtered = filterOrganizations();
+    var filtered = filterOrganizations(orgs);
     // console.log(filtered);
 
     // resets array and markers
@@ -54,7 +41,6 @@ function initMap() {
     for (var i = 0; i < markers.length; i++) {
       markers[i].setMap(null);
     }
-
 
     // grabs just the address ignore other info
     for(var i = 0, len = filtered.length; i < len; i++) {
@@ -70,6 +56,7 @@ function initMap() {
   });
 }
 
+
 function geocodeAddress(geocoder, resultsMap) {
   // var address = document.getElementById('address').value;
   // console.log( document.getElementById('address').value);
@@ -78,11 +65,13 @@ function geocodeAddress(geocoder, resultsMap) {
     var address = addressArray[i];
     geocoder.geocode({'address': address}, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
+
         // resultsMap.setCenter(results[0].geometry.location);
         var marker = new google.maps.Marker({
           map: resultsMap,
           position: results[0].geometry.location
         });
+
         markers.push(marker);
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
@@ -93,83 +82,39 @@ function geocodeAddress(geocoder, resultsMap) {
 
 var createListingRow = function(o){
   var logo = o.logo ? o.logo : ""
-  return "<div class='organization-elem' " + "data_id= " + o.id + "> <img src= " + logo + ' height="42" ' + ' width="42" ' + "></img>" + "<a href=/public_organizations/" + o.id + ">" + o.name + "</a>" + "<p>" + o.employee_count + " employees</p>" + "</div>";
+  return "<div class='organization-elem' " + "data_id= " + o.id + "><img src= " + logo + ' height="42" ' + ' width="42" ' + "></img>" + "<a href=/organizations/home/" + o.id + ">" + o.name + "</a>" + "<p>" + o.employee_count + " employees</p>" + "</div>";
 };
 
 var createListOutput = function(filtered_org){
   outputString = "";
+
   for(var i = 0, len = filtered_org.length; i < len; i++) {
-  // createListingRow.forEach( function(org){
     outputString = outputString.concat(createListingRow(filtered_org[i]));
-  };
+  }
+
   $("#organizations_list").html(outputString);
+
 }
 
+  var addressArray = [];
 
-$(document).ready(function(){
+  $(document).ready(function(){
 
-  var searchOutput = function(){};
-  var filterAndOutput = function(){};
+    $.ajax({
+      method: "GET",
+      url: baseUrl + "organizations.json",
+      success: function(organizations){
+        orgs = organizations;
 
-  $.ajax({
-    method: "GET",
-    url: baseUrl + "public_organizations.json",
-    success: function(organizations){
-      // for(var i = 0, len = organizations.length; i < len; i++) {
-      //   // console.log(organizations[i].address);
-      //   addressArray.push(organizations[i].address);
-      // }
-      // // console.log(addressArray);
-      orgs = organizations;
-    },
-    error:  function(){
-      console.log("Error loading addresses. Please try again");
-    }
+        for(var i = 0, len = orgs.length; i < len; i++) {
+          // console.log(organizations[i].address);
+          addressArray.push(orgs[i].address);
+        }
+
+        console.log(addressArray);
+      },
+      error:  function(){
+        console.log("Error loading addresses. Please try again");
+      }
+    });
   });
-
-
-
-  //
-  // var filter_json = (function(){
-  //
-  // // var filter_json = (function(){
-  // //   var inputString = $("input#search");
-  // //   var output = [];
-  // //   // console.log(orgs.length);
-  // //   for(var i = 0; i < orgs.length; i++) {
-  // //     // console.log(orgs[i].name);
-  // //     var re = new RegExp(inputString, "i");
-  // //     if (re.test(orgs[i].name)) {
-  // //       console.log(orgs[i]);
-  // //       output.push(orgs[i]);
-  // //     }
-  // //   }
-  // //   return output;
-  // // });
-
-
-  // var filter = function() {
-  //   $("#search").on("keyup", function(event) {
-  //     console.log("clicked");
-  //     event.preventDefault()
-  //     var filter = $('#search').val();
-  //     if ($('#search').val()==="") {
-  //       $('#organizations_list .organization-elem').hide();
-  //     } else {
-  //       $("#organizations_list .organization-elem").each(function() {
-  //         // TODO: Can we restrict this to top 3 as well
-  //         if ($(this).text().search(new RegExp(filter, "i")) < 0) {
-  //           $(this).fadeOut();
-  //         } else {
-  //           $(this).show();
-  //         }
-  //       })
-  //     }
-  //   });
-  // };
-  // filter();
-
-
-
-
-});

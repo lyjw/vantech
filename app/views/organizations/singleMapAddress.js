@@ -1,7 +1,6 @@
-
 $.ajax({
   method: "GET",
-  url: baseUrl + "public_organizations/<%= @organization.id %>.json",
+  url: baseUrl + "organizations/home/<%= @organization.id %>.json",
   success: function(organization){
     // for(var i = 0, len = organizations.length; i < len; i++) {
     //   // console.log(organizations[i].address);

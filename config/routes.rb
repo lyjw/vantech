@@ -1,13 +1,18 @@
 Rails.application.routes.draw do
 
+  root "organizations#home"
 
   resources :tech_stacks, only: [:create, :new, :destroy]
 
+  # get "organizations/home" => "organizations#home"
+
   resources :organizations do
     get :logo, on: :member
-  end
 
-  resources :public_organizations
+    collection do
+      get :home
+    end
+  end
 
 
   get '/about' => 'home#about'
@@ -30,7 +35,6 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  root "organizations#index"
 
   resources :users
 
@@ -43,9 +47,6 @@ Rails.application.routes.draw do
   resources :news, only: [:index]
 
   get "admin/users" => "admin#users"
-
-
-
 
   # Example resource route with options:
   #   resources :products do
