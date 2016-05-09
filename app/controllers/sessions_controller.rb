@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       if @user.admin
         redirect_to users_path, notice: "Welcome #{@user.first_name.capitalize}!"
       else
-        redirect_to users_path, notice: "Welcome #{@user.first_name.capitalize}!"
+        redirect_to new_organization_path, notice: "Welcome #{@user.first_name.capitalize}!"
       end
     else
       flash[:alert] = "Wrong Username or Password"
