@@ -27,7 +27,7 @@ class ClaimOrganizationsController < ApplicationController
   end
 
   def index
-    @pendings = PendingRequest.all
+    redirect_to users_path
   end
 
   def new
