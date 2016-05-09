@@ -1,0 +1,2 @@
+module ClaimOrganizationsHelper
+end
