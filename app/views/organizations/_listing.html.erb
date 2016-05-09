@@ -1,7 +1,20 @@
 <% @organizations.each do |organization| %>
-  <div class="organization-elem" data_id="<%= organization.id %>">
-    <%= image_tag organization.logo, height: "32", width: "32" %>
-    <%= link_to organization.name, organization_path(organization) %>
-    <p><%= organization.employee_count %> employees
+  <div class="row">
+
+    <div class="col-md-2">
+      <div class="col-md-5">
+        <%= image_tag organization.logo.url(:thumb) %>
+      </div>
+
+      <div class="col-md-6">
+        <div class="organization-elem" data_id="<%= organization.id %>">
+          <%= link_to organization.name, organization_path(organization) %>
+          <p><%= organization.employee_count %> employees</p>
+        </div>
+      </div>
+
+    </div>
+
   </div>
+
 <% end %>

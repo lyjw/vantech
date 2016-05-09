@@ -33,7 +33,7 @@ gem 'delayed_job_active_record'
 gem 'delayed_job_web'
 gem 'whenever'
 
-gem 'carrierwave'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'mini_magick'
 gem 'friendly_id'
 gem 'json'
