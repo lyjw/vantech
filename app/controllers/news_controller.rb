@@ -1,4 +1,7 @@
 class NewsController < ApplicationController
+  require 'openssl'
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+
   def index
     string_search_terms
     if @terms
