@@ -1,4 +1,4 @@
 <%= simple_form_for tech_stack, remote: true do |f| %>
-<%= f.input :name, wrapper_html: {class: "form-group"}, input_html: {class: "form-control"}  %>
+<%= f.input :name, label: false, placeholder: "Name", wrapper_html: {class: "form-group"}, input_html: {class: "form-control"}  %>
 <%= f.submit data: {disable_with: "submitting..."}, class: "btn btn-primary" %>
 <% end %>
