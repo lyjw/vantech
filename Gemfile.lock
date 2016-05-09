@@ -36,6 +36,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    addressable (2.4.0)
     arel (6.0.3)
     autoprefixer-rails (6.3.6)
       execjs
@@ -59,7 +60,11 @@ GEM
       coffee-rails (>= 3.2)
       railties (>= 3.0)
       sass-rails (>= 3.2)
+<<<<<<< a5aef21d9fbd8f0ce624423d6944395f85999582
     chronic (0.10.2)
+=======
+    coderay (1.1.1)
+>>>>>>> Search terms auto in search bar
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -93,7 +98,13 @@ GEM
       activesupport (>= 4.1.0)
     google-search (1.0.3)
       json
+    google_custom_search_api (2.0.0)
+      addressable
+      httparty
     hirb (0.7.3)
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     interactive_editor (0.0.10)
       spoon (>= 0.0.1)
@@ -112,6 +123,11 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+<<<<<<< a5aef21d9fbd8f0ce624423d6944395f85999582
+=======
+    meetup_client (0.1.0)
+    method_source (0.8.2)
+>>>>>>> Search terms auto in search bar
     mime-types (3.0)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0221)
@@ -120,10 +136,17 @@ GEM
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     multi_json (1.12.0)
+    multi_xml (0.5.5)
     multipart-post (2.0.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     pg (0.18.4)
+    pry (0.10.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
     rack (1.6.4)
     rack-cors (0.4.0)
     rack-protection (1.5.3)
@@ -176,6 +199,7 @@ GEM
       rack (~> 1.5)
       rack-protection (~> 1.4)
       tilt (>= 1.3, < 3)
+    slop (3.6.0)
     spoon (0.0.4)
       ffi
     spring (1.7.1)
@@ -222,6 +246,7 @@ DEPENDENCIES
   font-awesome-sass
   friendly_id
   google-search
+  google_custom_search_api
   hirb
   interactive_editor
   jbuilder (~> 2.0)
@@ -230,6 +255,8 @@ DEPENDENCIES
   json
   mini_magick
   pg (~> 0.15)
+  pry
+  pry-rails
   rack-cors
   rails (= 4.2.6)
   sass-rails (~> 5.0)

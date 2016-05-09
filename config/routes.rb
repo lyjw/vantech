@@ -39,6 +39,8 @@ Rails.application.routes.draw do
   end
 
   resources :news_searches
+  
+  resources :news, only: [:index]
 
   get "admin/users" => "admin#users"
 
