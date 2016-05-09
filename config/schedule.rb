@@ -22,6 +22,6 @@
 set :environment, "development"
 set :output, {:error => "log/cron_error_log.log", :standard => "log/cron_log.log"}
 
-every :hour do
+every :day, at: '12 am' do
   rake "vantech:update_events"
 end
