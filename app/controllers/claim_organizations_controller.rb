@@ -1,25 +1,37 @@
 class ClaimOrganizationsController < ApplicationController
 
-  def new
-    # byebug
-    # @pending = PendingRequest.new
-    # @pending.user = current_user
-    # # maybe make a collention on a sub route
-    # @pending.organization = ""
+  def create
+    @pending = PendingRequest.new
+    @pending.organization = Organization.find params[:organization]
+    @pending.user = current_user
+    @pending.save
+    redirect_to claim_organizations_path
   end
 
-  def create
+  def edit
+    pending = PendingRequest.find params[:id]
+    pending_org      = pending.organization
+    pending_org.user = pending.user
+    if pending_org.save
+      redirect_to claim_organizations_path, notice: "Saved"
+    else
+      redirect_to claim_organizations_path,notice: "Not saved"
+    end
+    pending.destroy
   end
 
   def destroy
-    # pending = PendingRequest.find params[:id]
-    # accepted_user = pending.user
-    # buissness     = pending.buissness
-    # buissness.user = accepted_user
-    # pending.destroy
+    pending = PendingRequest.find params[:id]
+    pending.destroy
+    redirect_to claim_organizations_path
   end
 
   def index
     @pendings = PendingRequest.all
+  end
+
+  def new
+    @pending = PendingRequest.new
+    @pending.organization = Organization.find params[:organization]
   end
 end
