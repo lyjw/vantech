@@ -7,9 +7,9 @@ class OrganizationsController < ApplicationController
 
   def home
     @addresses = Organization.all.map { |o| o.address }
-
+    all_tech_stacks
     search = params[:search]
-    
+
     @organizations = Organization.where(published: true)
     # @organizations = Organization.search()
     respond_to do |format|

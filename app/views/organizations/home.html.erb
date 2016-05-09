@@ -1,7 +1,9 @@
+<!-- Map -->
 <div id="large_map">
   <%= render "/organizations/map" %>
 </div>
 
+<!-- Search Bar -->
 <div id="org-search-bar form-group">
   <%= form_tag organizations_path, method: 'get', remote:true do %>
     <%= label_tag(:search, "Search for:") %>
@@ -9,10 +11,71 @@
     <%= submit_tag("Search") %>
   <% end %>
 </div>
+<br />
 
+<!-- Tech Stacks -->
+<div class="dropdown" id="tech-stack-dropdown">
+  <button class="btn btn-custom dropdown-toggle" type="button" data-toggle="dropdown"> Tech Stack </button>
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <% @techstacks.each do |stack| %>
+    <li><a href="#"><%= stack.name %></a></li>
+    <% end  %>
+  </ul>
+</div>
+
+<!-- Team Size -->
+<div class="dropdown" id="team-size-dropdown">
+  <button class="btn btn-custom dropdown-toggle" type="button" data-toggle="dropdown"> Team Size </button>
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <li><a href="#">Under 250</a></li>
+    <li><a href="#">251 - 500</a></li>
+    <li><a href="#">Above 500</a></li>
+  </ul>
+</div>
+<br />
+<br />
+
+<!-- List of Organization -->
 <div id="organizations_list" >
   <%= render "/organizations/listing" %>
 </div>
+
+<p>  hello wrold </p>
+<p>  hello wrold </p>
+<p>  hello wrold </p>
+<p>  hello wrold </p>
+
+<!-- Script PseudoCode -->
+<script>
+// UL is filtered by the selection for Tech Stack and Team Size
+// Depending on what is selected, show the listings that match
+// Otherwise, show all
+// Search only targets those companies that are shown
+// var arg = [];
+
+// enable search
+
+// var searchTest = function (arg){
+  // Takes input from the search box
+  // var inputString = $("input#search").val();
+  // Dynamic Search using RegExp --> Change for dropdown
+  // var re = new RegExp(inputString, "i");
+  // If the input consists of the input return true
+//   if (re.test(arg.name)) {
+//     return true;
+//   }
+//   else {
+//     return false;
+//   }
+// }
+//
+// var filterOrganizations = function (){
+//   return orgs.filter(searchTest);
+  // Return an array of all the searchTest input
+}
+</script>
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap">
 </script>
