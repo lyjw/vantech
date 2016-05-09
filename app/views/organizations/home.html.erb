@@ -1,18 +1,86 @@
+<!-- Map -->
 <div id="large_map">
   <%= render "/organizations/map" %>
 </div>
 
+<!-- Search Bar -->
 <div id="org-search-bar form-group">
   <%= form_tag organizations_path, method: 'get', remote:true do %>
-    <%= label_tag(:search, "Search for:") %>
-    <%= text_field_tag :search, params[:search], class: "form-control" %>
-    <%= submit_tag("Search") %>
+    <%= text_field_tag :search, params[:search], id: "org-search-text", class: "form-control empty", placeholder:"Search" %>
+    <%#= submit_tag("Search", id: "org-search", class: "form-control") %>
+    <!-- submit button ew lol -->
   <% end %>
 </div>
+<br />
 
+<!-- Tech Stacks -->
+<div id="org-filter">
+  <select id="tech-stacks" class="form-control">
+    <option>      Tech Stack    </option>
+      <% @techstacks.each_with_index do |stack, index| %>
+        <option value=<%= index %>> <%= stack.name %>    </option>
+      <% end  %>
+  </select>
+</div>
+
+<!-- Team Size -->
+<div id="org-filter">
+  <select id="team-size" class="form-control ">
+    <option value="0">      Team Size    </option>
+    <option value="1">      Under 250    </option>
+    <option value="2">      251 - 500    </option>
+    <option value="3">      Above 500    </option>
+  </select>
+</div>
+<br />
+<br />
+
+<!-- List of Organization -->
 <div id="organizations_list" >
   <%= render "/organizations/listing" %>
 </div>
+
+<!-- Search Bar JQuery -->
+<script>
+$('#org-search-text').on('keyup', function() {
+    var input = $(this);
+    if(input.val().length === 0) {
+        input.addClass('empty');
+    } else {
+        input.removeClass('empty');
+    }
+});
+</script>
+
+<!-- Script PseudoCode -->
+<script>
+// UL is filtered by the selection for Tech Stack and Team Size
+// Depending on what is selected, show the listings that match
+// Otherwise, show all
+// Search only targets those companies that are shown
+// var arg = [];
+
+// enable search
+
+// var searchTest = function (arg){
+  // Takes input from the search box
+  // var inputString = $("input#search").val();
+  // Dynamic Search using RegExp --> Change for dropdown
+  // var re = new RegExp(inputString, "i");
+  // If the input consists of the input return true
+//   if (re.test(arg.name)) {
+//     return true;
+//   }
+//   else {
+//     return false;
+//   }
+// }
+//
+// var filterOrganizations = function (){
+//   return orgs.filter(searchTest);
+  // Return an array of all the searchTest input
+// }
+</script>
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap">
 </script>

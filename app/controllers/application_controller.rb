@@ -24,4 +24,10 @@ class ApplicationController < ActionController::Base
   def authenticate_admin!
     redirect_to root_path, notice: "You do not have the access rights to that page" unless current_user.admin
   end
+
+  # all_tech_stacks method create to access tech stacks in home controller
+  def all_tech_stacks
+    @techstacks = TechStack.all
+  end
+  helper_method :all_tech_stacks
 end
